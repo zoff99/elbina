@@ -33,4 +33,4 @@ jobs:
     - name: macos-version2
       run: system_profiler SPSoftwareDataType
     - name: id
-    - run: id -a;pwd
+      run: id -a;pwd
