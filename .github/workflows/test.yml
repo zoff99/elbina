@@ -34,3 +34,7 @@ jobs:
       run: system_profiler SPSoftwareDataType
     - name: id
       run: id -a;pwd
+    - name: check
+      run: ls -al
+    - name: run_test
+      run: sudo bash -c "chmod a+rx .ci/ci_macos.sh;.ci/ci_macos.sh"

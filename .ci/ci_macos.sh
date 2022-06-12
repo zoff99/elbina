@@ -1,6 +1,4 @@
 #!/bin/sh
-apt-get update -qq
-# apt-get install -y --force-yes --no-install-recommends git ca-certificates
 git clone https://github.com/zoff99/elbina
 cd elbina/
 
