@@ -24,8 +24,7 @@ mb_getarch
 if [ "$mb_arch""x" = "rhelx" ]; then
   yum install -q -y -- "$pkgname"
 elif [ "$mb_arch""x" = "ubuntux" ]; then
-  DEBIAN_FRONTEND=noninteractive
-  apt-get install -qq -y --force-yes -- "$pkgname"
+  DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --force-yes -- "$pkgname"
 elif [ "$mb_arch""x" = "solarisx" ]; then
   echo "Unsupported arch/os: ""$mb_arch"
   exit 98

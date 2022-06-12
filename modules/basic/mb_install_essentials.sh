@@ -22,11 +22,10 @@ if [ "$mb_arch""x" = "rhelx" ]; then
   dnf install -q -y telnet
   yum install -q -y -- nano
 elif [ "$mb_arch""x" = "ubuntux" ]; then
-  DEBIAN_FRONTEND=noninteractive
-  apt-get install -qq -y --force-yes rsync
-  apt-get install -qq -y --force-yes vim
-  apt-get install -qq -y --force-yes telnet
-  apt-get install -qq -y --force-yes nano
+  DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --force-yes rsync
+  DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --force-yes vim
+  DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --force-yes telnet
+  DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --force-yes nano
 elif [ "$mb_arch""x" = "solarisx" ]; then
   echo "Unsupported arch/os: ""$mb_arch"
   exit 98
