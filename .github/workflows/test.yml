@@ -1,0 +1,36 @@
+name: test elbina
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [published, edited]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: dummy
+        default: dummy
+
+jobs:
+  test_ubuntu:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: check
+      run: ls -al
+    - name: run_test
+      run: sudo bash -c ".ci/ci.sh"
+
+  test_macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: install cliclick
+      run: brew install cliclick
+    - name: macos-version1
+      run: sw_vers -productVersion
+    - name: macos-version2
+      run: system_profiler SPSoftwareDataType
+    - name: id
+    - run: id -a;pwd
