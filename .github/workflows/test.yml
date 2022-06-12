@@ -20,7 +20,7 @@ jobs:
     - name: check
       run: ls -al
     - name: run_test
-      run: sudo bash -c ".ci/ci.sh"
+      run: sudo bash -c "chmod a+rx .ci/ci.sh;.ci/ci.sh"
 
   test_macos:
     runs-on: macos-latest
