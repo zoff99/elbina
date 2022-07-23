@@ -1,9 +1,10 @@
 #
 # install os pkg from repo
 #
-# all params mandatory
+# 1st param mandatory
 #
 # $1 <name>            packagename to install
+# $2 u                 update pkg repo before installing selected package
 #
 
 echo "loading ${BASH_SOURCE[0]}"
@@ -24,6 +25,14 @@ mb_getarch
 if [ "$mb_arch""x" = "rhelx" ]; then
   yum install -q -y -- "$pkgname"
 elif [ "$mb_arch""x" = "ubuntux" ]; then
+  if [ "${2:-''}""x" == "ux" ]; then
+    DEBIAN_FRONTEND=noninteractive apt-get update
+  fi
+  DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --force-yes -- "$pkgname"
+elif [ "$mb_arch""x" = "debianx" ]; then
+  if [ "${2:-''}""x" == "ux" ]; then
+    DEBIAN_FRONTEND=noninteractive apt-get update
+  fi
   DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --force-yes -- "$pkgname"
 elif [ "$mb_arch""x" = "solarisx" ]; then
   echo "Unsupported arch/os: ""$mb_arch"
