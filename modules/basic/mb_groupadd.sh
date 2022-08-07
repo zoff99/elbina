@@ -22,12 +22,27 @@ echo ""
 groupname="$1"
 groupid="$2"
 
-res_num=$(c1grep '^'"$groupname"':' /etc/group|wc -l)
+if [ "$mb_arch""x" = "Darwinx" ]; then
+  set +Eeuo pipefail
+  dscl . -read /Groups/"$groupname"
+  res_num1=$?
+  set -Eeuo pipefail
 
-if [ "$res_num""x" == "1x" ]; then
-  msg "${RED}group $groupname already exists${NOFORMAT}"
+  if [ "$res_num1""x" == "0x" ]; then
+    msg "${RED}group $groupname already exists${NOFORMAT}"
+  else
+    dscl . -create /Groups/"$groupname"
+    dscl . -append /Groups/"$groupname" gid "$groupid"
+    dscl . -append /Groups/"$groupname" passwd "*"
+  fi
 else
-  groupadd -g "$groupid" "$groupname"
+  res_num=$(c1grep '^'"$groupname"':' /etc/group|wc -l)
+
+  if [ "$res_num""x" == "1x" ]; then
+    msg "${RED}group $groupname already exists${NOFORMAT}"
+  else
+    groupadd -g "$groupid" "$groupname"
+  fi
 fi
 
 }

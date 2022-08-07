@@ -113,7 +113,12 @@ die() {
 }
 
 function mb_getarch() {
-  try1=$(cat /etc/os-release |grep '^ID='|sed -e 's#^.*="##'|sed -e 's#^ID=##'|tr -d '"')
+  arch_macos=$(uname 2>/dev/null)
+  if [ "$arch_macos""x" == "Darwinx" ]; then
+    mb_arch="$arch_macos"
+  else
+    try1=$(cat /etc/os-release |grep '^ID='|sed -e 's#^.*="##'|sed -e 's#^ID=##'|tr -d '"')
+  fi
   mb_arch="$try1"
 }
 
