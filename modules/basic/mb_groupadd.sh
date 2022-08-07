@@ -22,6 +22,7 @@ echo ""
 groupname="$1"
 groupid="$2"
 
+mb_getarch
 if [ "$mb_arch""x" = "Darwinx" ]; then
   set +Eeuo pipefail
   dscl . -read /Groups/"$groupname"
