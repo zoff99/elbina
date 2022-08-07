@@ -116,10 +116,12 @@ function mb_getarch() {
   arch_macos=$(uname 2>/dev/null)
   if [ "$arch_macos""x" == "Darwinx" ]; then
     mb_arch="$arch_macos"
+    unset arch_macos
   else
     try1=$(cat /etc/os-release |grep '^ID='|sed -e 's#^.*="##'|sed -e 's#^ID=##'|tr -d '"')
+    mb_arch="$try1"
+    unset try1
   fi
-  mb_arch="$try1"
 }
 
 function mb_cutorpaddstr() {
