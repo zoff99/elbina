@@ -24,6 +24,8 @@ pkgname="$1"
 mb_getarch
 if [ "$mb_arch""x" = "rhelx" ]; then
   yum install -q -y -- "$pkgname"
+elif [ "$mb_arch""x" = "Darwinx" ]; then
+  echo "not supported yet, NOOP"
 elif [ "$mb_arch""x" = "ubuntux" ]; then
   if [ "${2:-''}""x" == "ux" ]; then
     DEBIAN_FRONTEND=noninteractive apt-get update
