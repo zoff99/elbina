@@ -16,7 +16,7 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: check
       run: ls -al
     - name: run_test
@@ -25,7 +25,7 @@ jobs:
   test_macos:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: install cliclick
       run: brew install cliclick
     - name: macos-version1
