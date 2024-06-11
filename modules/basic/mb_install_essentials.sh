@@ -21,6 +21,11 @@ if [ "$mb_arch""x" = "rhelx" ]; then
   yum install -q -y -- vim
   dnf install -q -y telnet
   yum install -q -y -- nano
+elif [ "$mb_arch""x" = "rockyx" ]; then
+  yum install -q -y -- rsync
+  yum install -q -y -- vim
+  dnf install -q -y telnet
+  yum install -q -y -- nano
 elif [ "$mb_arch""x" = "Darwinx" ]; then
   echo "not supported yet, NOOP"
 elif [ "$mb_arch""x" = "ubuntux" ]; then

@@ -64,6 +64,8 @@ echo "using seperator char: ""$sperator"
 mb_getarch
 if [ "$mb_arch""x" = "rhelx" ]; then
   sed -i -e "s"$sperator"${regexin}"$sperator"${textout}"$sperator "$file"
+elif [ "$mb_arch""x" = "rockyx" ]; then
+  sed -i -e "s"$sperator"${regexin}"$sperator"${textout}"$sperator "$file"
 elif [ "$mb_arch""x" = "solarisx" ]; then
   gsed -i -e "s"$sperator"${regexin}"$sperator"${textout}"$sperator "$file"
 else

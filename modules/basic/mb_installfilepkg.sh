@@ -23,6 +23,8 @@ filename="$1"
 mb_getarch
 if [ "$mb_arch""x" = "rhelx" ]; then
   yum install -q -y -- "$filename"
+elif [ "$mb_arch""x" = "rockyx" ]; then
+  yum install -q -y -- "$filename"
 elif [ "$mb_arch""x" = "ubuntux" ]; then
   dpkg -i -- "$filename"
 elif [ "$mb_arch""x" = "solarisx" ]; then
