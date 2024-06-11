@@ -1,0 +1,31 @@
+name: test nginx
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [published, edited]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: dummy
+        default: dummy
+
+jobs:
+  test_linux_nginx:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: check
+      run: ls -al
+    - name: run_test
+      run: sudo bash -c "chmod a+rx .ci/ci_linux_nginx.sh;.ci/ci_linux_nginx.sh"
+
+    - name: check1
+      run: sudo ps auxwww|grep -i nginx
+
+    - name: check2
+      run: sudo ss -anp|grep -i nginx
+
+
